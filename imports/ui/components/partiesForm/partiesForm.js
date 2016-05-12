@@ -6,7 +6,7 @@ import './partiesForm.html';
 class PartiesForm {
     constructor($scope, $reactive) {
         'ngInject';
-        var vm = $reactive(this).attach($scope);
+        $reactive(this).attach($scope);
     }
 
     add(newName, newDescription) {
@@ -14,8 +14,8 @@ class PartiesForm {
             'name': newName,
             'description': newDescription
         });
-        vm.partyName = "";
-        vm.partyDesc = "";
+        this.partyName = "";
+        this.partyDesc = "";
     };
 }
 
@@ -25,7 +25,7 @@ export default angular.module(name, [
     angularMeteor
 ])
 .component(name, {
-    templateUrl: `/imports/ui/components/${name}/${name}.html`,
+    templateUrl: `imports/ui/components/${name}/${name}.html`,
     controllerAs: name,
     controller: PartiesForm
 });
