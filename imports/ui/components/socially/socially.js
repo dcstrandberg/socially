@@ -1,9 +1,12 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
+import uiRouter from 'angular-ui-router';
 
 import './socially.html';
 import { name as PartiesList } from '../partiesList/partiesList';
 import { name as PartiesForm } from '../partiesForm/partiesForm';
+import { name as PartyDetails } from '../partyDetails/partyDetails';
+import { name as Navigation } from '../navigation/navigation';
 
 class Socially {}
 
@@ -13,9 +16,20 @@ const name = 'socially';
 export default angular.module(name, [
     angularMeteor,
     PartiesList,
-    PartiesForm
+    PartiesForm,
+    PartyDetails,
+    uiRouter,
+    Navigation
 ]).component(name, {
     templateUrl: `imports/ui/components/${name}/${name}.html`,
     controllerAs: name,
     controller: Socially
-});
+})
+.config(config);
+
+function config($locationProvider, $urlRouterProvider) {
+    'ngInject';
+    
+    $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise('/parties');
+}
