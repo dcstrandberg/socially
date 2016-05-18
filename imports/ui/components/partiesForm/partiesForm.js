@@ -2,6 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import './partiesForm.html';
+import { Parties } from '../../../api/parties';
 
 class PartiesForm {
     constructor($scope, $reactive) {

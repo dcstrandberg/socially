@@ -4,6 +4,9 @@ import uiRouter from 'angular-ui-router';
 
 import './partiesList.html';
 
+import { Parties } from '../../../api/parties';
+import { name as PartyRemove } from '../partyRemove/partyRemove';
+
 class PartiesList {
     constructor($scope, $reactive) {
         'ngInject';
@@ -23,7 +26,8 @@ const name = 'partiesList';
 //Create a module
 export default angular.module(name, [
     angularMeteor,
-    uiRouter    
+    uiRouter,    
+    PartyRemove
 ]).component(name, {
     templateUrl: `imports/ui/components/${name}/${name}.html`,
     controllerAs: name,
