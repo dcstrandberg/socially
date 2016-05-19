@@ -1,7 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import template from './navigation.html';
+import './navigation.html';
 
 const name = 'navigation';
 
@@ -9,6 +9,6 @@ const name = 'navigation';
 export default angular.module(name, [
     angularMeteor
 ]).component(name, {
-    template,
+    templateUrl: `imports/ui/components/${name}/${name}.html`,
     controllerAs: name
 });
