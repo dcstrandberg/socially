@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import './partiesList.html';
+import template from './partiesList.html';
 
 import { Parties } from '../../../api/parties';
 import { name as PartyRemove } from '../partyRemove/partyRemove';
@@ -29,7 +29,7 @@ export default angular.module(name, [
     uiRouter,    
     PartyRemove
 ]).component(name, {
-    templateUrl: `imports/ui/components/${name}/${name}.html`,
+    template,
     controllerAs: name,
     controller: PartiesList
 })

@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import './socially.html';
+import template from './socially.html';
 import { name as PartiesList } from '../partiesList/partiesList';
 import { name as PartiesForm } from '../partiesForm/partiesForm';
 import { name as PartyDetails } from '../partyDetails/partyDetails';
@@ -21,7 +21,7 @@ export default angular.module(name, [
     uiRouter,
     Navigation
 ]).component(name, {
-    templateUrl: `imports/ui/components/${name}/${name}.html`,
+    template,
     controllerAs: name,
     controller: Socially
 })
