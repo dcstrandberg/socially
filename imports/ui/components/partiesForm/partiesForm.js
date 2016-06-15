@@ -1,7 +1,9 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import './partiesForm.html';
+import { Meteor } from 'meteor/meteor';
+
+import template from './partiesForm.html';
 import { Parties } from '../../../api/parties';
 
 class PartiesForm {
@@ -10,13 +12,11 @@ class PartiesForm {
         $reactive(this).attach($scope);
     }
 
-    add(newName, newDescription) {
-        Parties.insert({
-            'name': newName,
-            'description': newDescription
-        });
-        this.partyName = "";
-        this.partyDesc = "";
+    add() {
+        this.party.owner = Meteor.user()._id;
+        Parties.insert(this.party);
+        this.party.name = "";
+        this.party.description = "";
     };
 }
 
@@ -26,7 +26,7 @@ export default angular.module(name, [
     angularMeteor
 ])
 .component(name, {
-    templateUrl: `imports/ui/components/${name}/${name}.html`,
+    template,
     controllerAs: name,
     controller: PartiesForm
 });

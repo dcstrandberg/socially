@@ -1,7 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import './partyRemove.html';
+import template from './partyRemove.html';
 import { Parties } from '../../../api/parties';
 
 
@@ -19,7 +19,7 @@ const name = 'partyRemove';
 export default angular.module(name, [
     angularMeteor
 ]).component(name, {
-    templateUrl: `imports/ui/components/${name}/${name}.html`,
+    template,
     bindings: {
         party: '<' //Add one-way data binding????
     },
