@@ -1,5 +1,9 @@
 <form name="addParty" ng-submit="partiesForm.add()">
     <input type="text" ng-model="partiesForm.party.name" placeholder="What Type of Party?"/>
     <input type="text" ng-model="partiesForm.party.description" placeholder="Tell us about the party"/>
-    <input type="submit"/>
+    <label>
+        Public Party?
+    </label>
+    <input type="checkbox" ng-model="partiesForm.party.public"/>
+    <input type="submit" value="Add Party!"/>
 </form>

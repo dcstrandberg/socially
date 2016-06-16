@@ -4,7 +4,7 @@ import angularMeteor from 'angular-meteor';
 import { Meteor } from 'meteor/meteor';
 
 import template from './partiesForm.html';
-import { Parties } from '../../../api/parties';
+import { Parties } from '../../../api/parties/index';
 
 class PartiesForm {
     constructor($scope, $reactive) {
@@ -15,8 +15,7 @@ class PartiesForm {
     add() {
         this.party.owner = Meteor.user()._id;
         Parties.insert(this.party);
-        this.party.name = "";
-        this.party.description = "";
+        this.party = {};
     };
 }
 

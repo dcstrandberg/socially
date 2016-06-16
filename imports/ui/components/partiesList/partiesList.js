@@ -4,7 +4,7 @@ import uiRouter from 'angular-ui-router';
 
 import template from './partiesList.html';
 
-import { Parties } from '../../../api/parties';
+import { Parties } from '../../../api/parties/index';
 import { name as PartyRemove } from '../partyRemove/partyRemove';
 
 class PartiesList {
@@ -12,6 +12,8 @@ class PartiesList {
         'ngInject';
         
         var vm = $reactive(this).attach($scope);
+        
+        this.subscribe('parties');
         
         vm.helpers({
             parties() {

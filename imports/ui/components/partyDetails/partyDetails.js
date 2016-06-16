@@ -5,7 +5,7 @@ import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
 
 import template from './partyDetails.html';
-import { Parties } from '../../../api/parties';
+import { Parties } from '../../../api/parties/index';
 
 
 class PartyDetails {
@@ -13,6 +13,8 @@ class PartyDetails {
         'ngInject';
         
         $reactive(this).attach($scope);
+        
+        this.subscribe('parties');
         
         this.partyId = $stateParams.partyId;
         
@@ -31,7 +33,8 @@ class PartyDetails {
         }, {
             $set: {
                 name: this.party.name,
-                description: this.party.description
+                description: this.party.description,
+                public: this.party.public
             }
         }, (error) => {
                 if (error) {
