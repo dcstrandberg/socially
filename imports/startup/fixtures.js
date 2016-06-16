@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Parties } from '../imports/api/parties/index';
+import { Parties } from '../api/parties/index';
 
 Meteor.startup(() => {
   if (Parties.find().count() === 0) {

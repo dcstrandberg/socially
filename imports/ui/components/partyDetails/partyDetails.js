@@ -15,6 +15,7 @@ class PartyDetails {
         $reactive(this).attach($scope);
         
         this.subscribe('parties');
+        this.subscribe('users');
         
         this.partyId = $stateParams.partyId;
         
@@ -23,6 +24,9 @@ class PartyDetails {
                 return Parties.findOne({
                     _id: $stateParams.partyId
                 });
+            },
+            users() {
+                return Meteor.users.find({});
             }
         });
     }
