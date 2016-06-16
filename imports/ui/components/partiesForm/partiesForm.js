@@ -10,6 +10,8 @@ class PartiesForm {
     constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
+        
+        this.party = {};
     }
 
     add() {
