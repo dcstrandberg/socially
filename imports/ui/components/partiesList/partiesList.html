@@ -1,9 +1,15 @@
+<parties-sort on-change="partiesList.sortChanged(sort)" property="name" order="1"></parties-sort>
+
 <ul> 
-    <li ng-repeat="party in partiesList.parties">
+    <li dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
         <party-remove party="party"></party-remove>  <a ui-sref="partyDetails({ partyId: party._id })">
         {{party.name}}
         </a>
         <p>{{party.description}}</p>
     </li>
 </ul>
+
+<dir-pagination-controls 
+    on-page-change="partiesList.pageChanged(newPageNumber)">
+    </dir-pagination-controls>
 
