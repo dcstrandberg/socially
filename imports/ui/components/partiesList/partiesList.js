@@ -21,11 +21,13 @@ class PartiesList {
         this.sort = {
             name: 1
         };
+        this.searchText = '';
         
         this.subscribe('parties', () => [{
             limit: parseInt(this.perPage),
             skip: parseInt((this.getReactively('page') - 1) * this.perPage),
-            sort: this.getReactively('sort')}
+            sort: this.getReactively('sort')
+        }, this.getReactively('searchText')
         ]);
         
         vm.helpers({
