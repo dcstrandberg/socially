@@ -9,6 +9,7 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 import { Parties } from '../../../api/parties/index';
 import { name as PartyRemove } from '../partyRemove/partyRemove';
 import { name as PartiesSort } from '../partiesSort/partiesSort';
+import { name as PartyCreator } from '../partyCreator/partyCreator';
 
 class PartiesList {
     constructor($scope, $reactive) {
@@ -59,7 +60,8 @@ export default angular.module(name, [
     uiRouter,  
     utilsPagination,  
     PartyRemove,
-    PartiesSort
+    PartiesSort,
+    PartyCreator
 ]).component(name, {
     template,
     controllerAs: name,
