@@ -14,7 +14,7 @@ class PartyCreator {
 
         $scope.viewModel(this);
 
-        this.subscribe('users');
+        //this.subscribe('users');
 
         this.helpers({
             creator() {
