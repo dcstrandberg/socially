@@ -20,7 +20,7 @@ export function invite(partyId, userId) {
     check(userId, String);
 
     if(!this.userId) {
-        throw new Meteor.Error(400, 'You have to be signed in!');
+        throw new Meteor.Error(400, 'You have to be logged in!');
     }
 
     const party = Parties.findOne(partyId);
