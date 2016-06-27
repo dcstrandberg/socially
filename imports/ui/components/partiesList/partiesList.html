@@ -1,18 +1,30 @@
+<parties-form ng-show="partiesList.isLoggedIn"></parties-form>
+<div ng-hide="partiesList.isLoggedIn">
+    Please log in to add a party!
+</div>
+
 <input type="search" ng-model="partiesList.searchText" placeholder="Search" />
 
 <parties-sort on-change="partiesList.sortChanged(sort)" property="name" order="1"></parties-sort>
 
 <ul> 
     <li dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
-        <party-remove party="party"></party-remove>  <a ui-sref="partyDetails({ partyId: party._id })">
+        <party-remove party="party" ng-show="partiesList.isOwner(party)"></party-remove>  <a ui-sref="partyDetails({ partyId: party._id })">
         {{party.name}}
         </a>
         <p>{{party.description}}</p>
-        <party-rsvp party="party"></party-rsvp>
-        
+        <party-rsvp party="party" ng-show="partiesList.isLoggedIn"></party-rsvp>
+        <div ng-hide="partiesList.isLoggedIn">
+            <i>Sign in to RSVP for this party</i>
+        </div>
+
         <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list>
         
-        <party-unanswered party="party"></party-unanswered>
+        <party-unanswered party="party" ng-if="!party.public"></party-unanswered>
+        <div ng-if="party.public">
+            Everyone is invited!
+        </div>
+        
         <party-creator party="party"></party-creator>
     </li>
 </ul>

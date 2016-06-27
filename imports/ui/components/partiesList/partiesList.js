@@ -7,6 +7,7 @@ import template from './partiesList.html';
 
 import { Counts } from 'meteor/tmeasday:publish-counts';
 import { Parties } from '../../../api/parties/index';
+import { name as PartiesForm } from '../partiesForm/partiesForm';
 import { name as PartyRemove } from '../partyRemove/partyRemove';
 import { name as PartiesSort } from '../partiesSort/partiesSort';
 import { name as PartyCreator } from '../partyCreator/partyCreator';
@@ -44,10 +45,20 @@ class PartiesList {
             }, 
             partiesCount() {
                 return Counts.get('numberOfParties');
+            },
+            isLoggedIn() {
+                return !!Meteor.userId();
+            },
+            currentUserId() {
+                return Meteor.userId();
             }
         });
     }//End of Constructor
     
+    isOwner(party) {
+        return this.isLoggedIn && party.owner === this.currentUserId;
+    }
+
     pageChanged(newPage) {
         this.page = newPage;
     }
@@ -64,6 +75,7 @@ export default angular.module(name, [
     angularMeteor,
     uiRouter,  
     utilsPagination,  
+    PartiesForm,
     PartyRemove,
     PartiesSort,
     PartyCreator,
@@ -82,6 +94,6 @@ function config($stateProvider) {
     $stateProvider
         .state('parties', {
             url: '/parties',
-            template: '<parties-form></parties-form><br/><parties-list></parties-list>'
+            template: '<parties-list></parties-list>'
         });
 }
